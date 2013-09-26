@@ -65,6 +65,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Network\Network.csproj">
+      <Project>{d415bafc-8e5c-4daa-a056-b7e359434705}</Project>
+      <Name>Network</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SharpNeatLib\SharpNeatLib.csproj">
       <Project>{ABC5C77A-DEBA-420C-926C-BD3E6F37AE15}</Project>
       <Name>SharpNeatLib</Name>

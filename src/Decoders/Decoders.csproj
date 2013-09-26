@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{223DC668-E791-4B78-B3ED-BED954954741}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SharpNEAT.Decoders</RootNamespace>
+    <AssemblyName>SharpNEAT.Decoders</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CyclicNetworkFactory.cs" />
+    <Compile Include="FastAcyclicNetworkFactory.cs" />
+    <Compile Include="FastCyclicNetworkFactory.cs" />
+    <Compile Include="HyperNeat\DefaultNodeSetMappingFunction.cs" />
+    <Compile Include="HyperNeat\HyperNeatDecoder.cs" />
+    <Compile Include="HyperNeat\INodeSetMappingFunction.cs" />
+    <Compile Include="HyperNeat\NodeSetMapping.cs" />
+    <Compile Include="HyperNeat\Substrate.cs" />
+    <Compile Include="HyperNeat\SubstrateConnection.cs" />
+    <Compile Include="HyperNeat\SubstrateNode.cs" />
+    <Compile Include="HyperNeat\SubstrateNodeSet.cs" />
+    <Compile Include="Neat\NeatGenomeDecoder.cs" />
+    <Compile Include="NetworkActivationScheme.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{c9ac4b87-f4a8-42df-9264-68bef3f80111}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Genomes\Genomes.csproj">
+      <Project>{52f0747e-cdce-446b-a724-89a4d9d1abe5}</Project>
+      <Name>Genomes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{09c4fc12-2c77-4a4f-bba0-96511b0770fe}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Network\Network.csproj">
+      <Project>{d415bafc-8e5c-4daa-a056-b7e359434705}</Project>
+      <Name>Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phenomes\Phenomes.csproj">
+      <Project>{1cb44372-f0d5-4356-b27d-2975a795ffa1}</Project>
+      <Name>Phenomes</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

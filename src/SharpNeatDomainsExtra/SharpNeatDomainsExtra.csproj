@@ -111,9 +111,25 @@
       <Project>{c9ac4b87-f4a8-42df-9264-68bef3f80111}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Decoders\Decoders.csproj">
+      <Project>{223dc668-e791-4b78-b3ed-bed954954741}</Project>
+      <Name>Decoders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Genomes\Genomes.csproj">
+      <Project>{52f0747e-cdce-446b-a724-89a4d9d1abe5}</Project>
+      <Name>Genomes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Interfaces\Interfaces.csproj">
       <Project>{09c4fc12-2c77-4a4f-bba0-96511b0770fe}</Project>
       <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Network\Network.csproj">
+      <Project>{d415bafc-8e5c-4daa-a056-b7e359434705}</Project>
+      <Name>Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phenomes\Phenomes.csproj">
+      <Project>{1cb44372-f0d5-4356-b27d-2975a795ffa1}</Project>
+      <Name>Phenomes</Name>
     </ProjectReference>
     <ProjectReference Include="..\SharpNeatDomains\SharpNeatDomains.csproj">
       <Project>{73AB8C8C-6315-4DC7-A3DE-3C747F86AC78}</Project>
