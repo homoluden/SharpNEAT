@@ -16,10 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
-using SharpNeat.Utility;
 
-namespace SharpNeat.EvolutionAlgorithms
+using System;
+using SharpNEAT.Common;
+
+namespace SharpNEAT.Evolution
 {
     /// <summary>
     /// Neat evolution algorithm statistics.

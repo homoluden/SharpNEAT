@@ -17,7 +17,7 @@
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using SharpNeat.Core;
+using SharpNEAT.Common;
 
 namespace SharpNEAT.Interfaces
 {

@@ -18,14 +18,14 @@
  */
 using System.Collections.Generic;
 using System.Xml;
+using SharpNEAT.Core.DistanceMetrics;
+using SharpNEAT.Core.SpeciationStrategies;
+using SharpNEAT.Evolution;
+using SharpNEAT.Evolution.ComplexityRegulation;
+using SharpNEAT.Interfaces;
 using log4net;
-
-using SharpNeat.EvolutionAlgorithms;
 using SharpNeat.Genomes.Neat;
-using SharpNeat.DistanceMetrics;
 using SharpNeat.Core;
-using SharpNeat.SpeciationStrategies;
-using SharpNeat.EvolutionAlgorithms.ComplexityRegulation;
 using SharpNeat.Phenomes;
 using SharpNeat.Decoders.Neat;
 using SharpNeat.Decoders;

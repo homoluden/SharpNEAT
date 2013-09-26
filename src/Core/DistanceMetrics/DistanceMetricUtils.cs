@@ -16,10 +16,13 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 using System.Collections.Generic;
+using SharpNEAT.Common;
+using SharpNEAT.Interfaces;
 using SharpNeat.Core;
 
-namespace SharpNeat.DistanceMetrics
+namespace SharpNEAT.Core.DistanceMetrics
 {
     /// <summary>
     /// Static helper methods for distance metrics.

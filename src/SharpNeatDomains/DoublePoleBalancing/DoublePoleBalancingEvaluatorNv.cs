@@ -17,6 +17,7 @@
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
 using System;
+using SharpNEAT.Common;
 using SharpNeat.Core;
 using SharpNeat.Phenomes;
 

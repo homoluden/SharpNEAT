@@ -16,9 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System.Collections.Generic;
 
-namespace SharpNeat.Core
+using System.Collections.Generic;
+using SharpNEAT.Common;
+
+namespace SharpNEAT.Interfaces
 {
     /// <summary>
     /// An IDistanceMetric represents a metric for measuring the distance between two genome positions in an

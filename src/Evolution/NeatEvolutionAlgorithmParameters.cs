@@ -17,7 +17,7 @@
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SharpNeat.EvolutionAlgorithms
+namespace SharpNEAT.Evolution
 {
     /// <summary>
     /// Parameters specific to the NEAT evolution algorithm.

@@ -16,9 +16,10 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 using System;
 
-namespace SharpNeat.Core
+namespace SharpNEAT.Common
 {
     /// <summary>
     /// Represents an update scheme for an IEvolutionAlgorithm. e.g. update per some time duration or 

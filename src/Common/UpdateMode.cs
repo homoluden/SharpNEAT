@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace SharpNeat.Core
+namespace SharpNEAT.Common
 {
     /// <summary>
     /// An enumeration of update schemes, e.g. Fire an update event the per some time duration or some number of generations.

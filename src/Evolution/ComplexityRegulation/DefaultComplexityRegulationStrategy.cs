@@ -17,7 +17,7 @@
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SharpNeat.EvolutionAlgorithms.ComplexityRegulation
+namespace SharpNEAT.Evolution.ComplexityRegulation
 {
     /// <summary>
     /// Default complexity regulation strategy. 

@@ -16,10 +16,10 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System;
-using SharpNeat.Utility;
 
-namespace SharpNeat.Core
+using System;
+
+namespace SharpNEAT.Common
 {
     /// <summary>
     /// Encapsulates genome evaluation data; specifically whether the genome has been evaluated, the genome's fitness,

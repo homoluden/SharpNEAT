@@ -19,19 +19,20 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Xml;
+using SharpNEAT.Core.DistanceMetrics;
+using SharpNEAT.Core.SpeciationStrategies;
+using SharpNEAT.Evolution;
+using SharpNEAT.Evolution.ComplexityRegulation;
+using SharpNEAT.Interfaces;
 using log4net;
 using SharpNeat.Core;
 using SharpNeat.Decoders;
 using SharpNeat.Decoders.HyperNeat;
-using SharpNeat.DistanceMetrics;
 using SharpNeat.Domains;
-using SharpNeat.EvolutionAlgorithms;
-using SharpNeat.EvolutionAlgorithms.ComplexityRegulation;
 using SharpNeat.Genomes.HyperNeat;
 using SharpNeat.Genomes.Neat;
 using SharpNeat.Network;
 using SharpNeat.Phenomes;
-using SharpNeat.SpeciationStrategies;
 
 namespace SharpNeat.DomainsExtra.WalkerBox2d
 {

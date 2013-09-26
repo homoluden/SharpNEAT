@@ -21,6 +21,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+using SharpNEAT.Interfaces;
 using SharpNeat.Core;
 using SharpNeat.Domains.BoxesVisualDiscrimination;
 using SharpNeat.Genomes.Neat;

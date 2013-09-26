@@ -18,7 +18,7 @@
  */
 using System;
 using System.Windows.Forms;
-using SharpNeat.EvolutionAlgorithms;
+using SharpNEAT.Evolution;
 using SharpNeat.Genomes.Neat;
 using SharpNeat.Utility;
 using ZedGraph;

@@ -16,13 +16,16 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SharpNEAT.Common;
+using SharpNEAT.Interfaces;
 using SharpNeat.Core;
 
-namespace SharpNeat.DistanceMetrics
+namespace SharpNEAT.Core.DistanceMetrics
 {
     // TODO: Include coefficients and constant present on ManhattanDistance metric.
     /// <summary>

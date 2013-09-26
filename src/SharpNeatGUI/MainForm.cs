@@ -25,14 +25,16 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
-
+using SharpNEAT.Common;
+using SharpNEAT.Common.Enums;
+using SharpNEAT.Evolution;
+using SharpNEAT.Evolution.ComplexityRegulation;
+using SharpNEAT.Interfaces;
 using log4net;
 using log4net.Config;
 
 using SharpNeat.Core;
 using SharpNeat.Domains;
-using SharpNeat.EvolutionAlgorithms;
-using SharpNeat.EvolutionAlgorithms.ComplexityRegulation;
 using SharpNeat.Genomes.Neat;
 using SharpNeat.Network;
 using SharpNeat.Utility;

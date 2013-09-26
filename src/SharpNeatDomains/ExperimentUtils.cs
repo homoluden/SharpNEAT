@@ -19,8 +19,8 @@
 using System;
 using System.Threading.Tasks;
 using System.Xml;
+using SharpNEAT.Evolution.ComplexityRegulation;
 using SharpNeat.Decoders;
-using SharpNeat.EvolutionAlgorithms.ComplexityRegulation;
 
 namespace SharpNeat.Domains
 {

@@ -19,8 +19,8 @@
 
 using System;
 using System.Windows.Forms;
+using SharpNEAT.Evolution;
 using SharpNeat.Domains;
-using SharpNeat.EvolutionAlgorithms;
 using SharpNeat.Genomes.Neat;
 
 namespace SharpNeatGUI

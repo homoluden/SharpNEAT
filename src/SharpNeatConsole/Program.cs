@@ -20,10 +20,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using SharpNEAT.Common.Enums;
+using SharpNEAT.Evolution;
+using SharpNEAT.Interfaces;
 using log4net.Config;
 using SharpNeat.Core;
 using SharpNeat.Domains.Xor;
-using SharpNeat.EvolutionAlgorithms;
 using SharpNeat.Genomes.Neat;
 
 namespace SharpNeatConsole

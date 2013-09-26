@@ -16,7 +16,10 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace SharpNeat.Core
+
+using SharpNEAT.Common;
+
+namespace SharpNEAT.Interfaces
 {
     /// <summary>
     /// Generic interface for genome classes.

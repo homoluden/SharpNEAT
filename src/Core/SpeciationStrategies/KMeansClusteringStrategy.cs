@@ -16,13 +16,16 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using SharpNEAT.Common;
 using SharpNEAT.Interfaces;
+using SharpNeat;
 using SharpNeat.Core;
 
-namespace SharpNeat.SpeciationStrategies
+namespace SharpNEAT.Core.SpeciationStrategies
 {
     // ENHANCEMENT: k-means++ seeks to choose better starting clusters. (http://en.wikipedia.org/wiki/K-means_clustering)
     // ENHANCEMENT: The filtering algorithm uses kd-trees to speed up each k-means step[9]. (http://en.wikipedia.org/wiki/K-means_clustering)

@@ -20,14 +20,15 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using SharpNEAT.Core.DistanceMetrics;
+using SharpNEAT.Core.SpeciationStrategies;
+using SharpNEAT.Evolution.ComplexityRegulation;
 using SharpNEAT.Interfaces;
+using SharpNeat;
 using SharpNeat.Core;
-using SharpNeat.DistanceMetrics;
-using SharpNeat.EvolutionAlgorithms.ComplexityRegulation;
-using SharpNeat.SpeciationStrategies;
 using SharpNeat.Utility;
 
-namespace SharpNeat.EvolutionAlgorithms
+namespace SharpNEAT.Evolution
 {
     /// <summary>
     /// Implementation of the NEAT evolution algorithm. 

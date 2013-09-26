@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace SharpNeat.Core
+namespace SharpNEAT.Common
 {
     /// <summary>
     /// Auxiliary fitness info, i.e. for evaluation metrics other than the

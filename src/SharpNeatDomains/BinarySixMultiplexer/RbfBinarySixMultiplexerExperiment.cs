@@ -19,16 +19,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Xml;
+using SharpNEAT.Core.DistanceMetrics;
+using SharpNEAT.Core.SpeciationStrategies;
+using SharpNEAT.Evolution;
+using SharpNEAT.Evolution.ComplexityRegulation;
+using SharpNEAT.Interfaces;
 using log4net;
 using SharpNeat.Core;
 using SharpNeat.Decoders;
 using SharpNeat.Decoders.Neat;
-using SharpNeat.DistanceMetrics;
-using SharpNeat.EvolutionAlgorithms;
-using SharpNeat.EvolutionAlgorithms.ComplexityRegulation;
 using SharpNeat.Genomes.Neat;
 using SharpNeat.Phenomes;
-using SharpNeat.SpeciationStrategies;
 using SharpNeat.Genomes.RbfNeat;
 using SharpNeat.Network;
 

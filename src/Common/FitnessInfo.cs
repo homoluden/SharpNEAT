@@ -17,7 +17,7 @@
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SharpNeat.Core
+namespace SharpNEAT.Common
 {
     /// <summary>
     /// Wrapper struct for fitness values.

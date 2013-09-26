@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace SharpNeat.EvolutionAlgorithms.ComplexityRegulation
+namespace SharpNEAT.Evolution.ComplexityRegulation
 {
     /// <summary>
     /// Complexity regulation modes.

@@ -18,8 +18,9 @@
  */
 using System.Collections.Generic;
 using System.Xml;
+using SharpNEAT.Evolution;
+using SharpNEAT.Interfaces;
 using SharpNeat.Core;
-using SharpNeat.EvolutionAlgorithms;
 using SharpNeat.Genomes.Neat;
 using SharpNeat.Phenomes;
 

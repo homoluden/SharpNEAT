@@ -16,10 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace SharpNeat.Core
+namespace SharpNEAT.Common
 {
     /// <summary>
     /// General purpose representation of a point in a multidimensional space. A vector of coordinates, 

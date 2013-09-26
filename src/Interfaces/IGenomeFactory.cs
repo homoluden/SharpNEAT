@@ -16,10 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 using System.Collections.Generic;
 using SharpNeat.Utility;
 
-namespace SharpNeat.Core
+namespace SharpNEAT.Interfaces
 {
     /// <summary>
     /// Generic interface genome factory classes. Genome factories are intended to be used for creating initial

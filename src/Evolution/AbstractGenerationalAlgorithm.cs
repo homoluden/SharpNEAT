@@ -20,14 +20,17 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using SharpNEAT.Common;
+using SharpNEAT.Common.Enums;
+using SharpNEAT.Interfaces;
+using SharpNeat;
 using log4net;
 using SharpNeat.Core;
-using System.Threading.Tasks;
 
 // Disable missing comment warnings for non-private variables.
 #pragma warning disable 1591
 
-namespace SharpNeat.EvolutionAlgorithms
+namespace SharpNEAT.Evolution
 {
     /// <summary>
     /// Abstract class providing some common/baseline data and methods for implementions of IEvolutionAlgorithm.

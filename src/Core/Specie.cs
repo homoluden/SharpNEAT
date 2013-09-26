@@ -17,6 +17,7 @@
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
 using System.Collections.Generic;
+using SharpNEAT.Common;
 using SharpNEAT.Interfaces;
 
 namespace SharpNeat.Core

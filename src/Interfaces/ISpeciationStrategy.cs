@@ -1,4 +1,4 @@
-using SharpNEAT.Interfaces;
+using System.Collections.Generic;
 /* ***************************************************************************
  * This file is part of SharpNEAT - Evolution of Neural Networks.
  * 
@@ -17,9 +17,8 @@ using SharpNEAT.Interfaces;
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
-using System.Collections.Generic;
 
-namespace SharpNeat.Core
+namespace SharpNEAT.Interfaces
 {
     /// <summary>
     /// Represents a strategy for dividing genomes into distinct species.

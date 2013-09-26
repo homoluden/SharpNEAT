@@ -16,12 +16,13 @@
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 using System.Collections.Generic;
 using SharpNeat.Core;
 using System.Diagnostics;
 using SharpNEAT.Interfaces;
 
-namespace SharpNeat.SpeciationStrategies
+namespace SharpNEAT.Core.SpeciationStrategies
 {
     /// <summary>
     /// Static helper methods for speciation.

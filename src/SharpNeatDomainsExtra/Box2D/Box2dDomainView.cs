@@ -22,6 +22,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Box2DX.Common;
 using Box2DX.Dynamics;
+using SharpNEAT.Interfaces;
 using SharpNeat.Core;
 using SharpNeat.Domains;
 using SharpNeat.DomainsExtra.Box2D;

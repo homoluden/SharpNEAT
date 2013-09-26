@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using SharpNeat.Core;
+using SharpNEAT.Common;
 
 namespace SharpNEAT.Interfaces
 {
