@@ -17,6 +17,7 @@ using System;
  * You should have received a copy of the GNU General Public License
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
+using SharpNEAT.Interfaces;
 using SharpNeat.Core;
 using SharpNeat.Phenomes;
 

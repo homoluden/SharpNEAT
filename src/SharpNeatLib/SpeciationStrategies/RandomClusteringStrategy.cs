@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using SharpNeat.Core;
 using SharpNeat.Utility;
+using SharpNEAT.Interfaces;
 
 namespace SharpNeat.SpeciationStrategies
 {
@@ -40,10 +41,10 @@ namespace SharpNeat.SpeciationStrategies
         /// Speciates the genomes in genomeList into the number of species specified by specieCount
         /// and returns a newly constructed list of Specie objects containing the speciated genomes.
         /// </summary>
-        public IList<Specie<TGenome>> InitializeSpeciation(IList<TGenome> genomeList, int specieCount)
+        public IList<ISpecie<TGenome>> InitializeSpeciation(IList<TGenome> genomeList, int specieCount)
         {
             // Craete the empty specie objects.
-            List<Specie<TGenome>> specieList = new List<Specie<TGenome>>(specieCount);
+            var specieList = new List<ISpecie<TGenome>>(specieCount);
             int capacity = (int)Math.Ceiling((double)genomeList.Count/(double)specieCount);
             for(int i=0; i<specieCount; i++) {
                 specieList.Add(new Specie<TGenome>((uint)i, i, capacity));
@@ -60,13 +61,13 @@ namespace SharpNeat.SpeciationStrategies
         /// 
         /// This method can be used for initialization or completely respeciating an existing genome population.
         /// </summary>
-        public void SpeciateGenomes(IList<TGenome> genomeList, IList<Specie<TGenome>> specieList)
+        public void SpeciateGenomes(IList<TGenome> genomeList, IList<ISpecie<TGenome>> specieList)
         {
             Debug.Assert(SpeciationUtils.TestEmptySpecies(specieList), "SpeciateGenomes(IList<TGenome>,IList<Species<TGenome>>) called with non-empty species");
             Debug.Assert(genomeList.Count >= specieList.Count, string.Format("SpeciateGenomes(IList<TGenome>,IList<Species<TGenome>>). Species count [{0}] is greater than genome count [{1}].", specieList.Count, genomeList.Count));
 
             // Make a copy of genomeList and shuffle the items.
-            List<TGenome> gList = new List<TGenome>(genomeList);
+            var gList = new List<TGenome>(genomeList);
             Utilities.Shuffle(gList, _rng);
 
             // We evenly distribute genomes between species. 
@@ -80,7 +81,7 @@ namespace SharpNeat.SpeciationStrategies
             int genomeIdx = 0;
             for(int i=0; i<specieCount; i++)
             {
-                Specie<TGenome> specie = specieList[i];
+                ISpecie<TGenome> specie = specieList[i];
                 for(int j=0; j<genomesPerSpecie; j++, genomeIdx++) 
                 {
                     gList[genomeIdx].SpecieIdx = specie.Idx;
@@ -112,14 +113,14 @@ namespace SharpNeat.SpeciationStrategies
         /// that we wish to keep; typically these would be elite genomes that are the parents of the
         /// offspring.
         /// </summary>
-        public void SpeciateOffspring(IList<TGenome> genomeList, IList<Specie<TGenome>> specieList)
+        public void SpeciateOffspring(IList<TGenome> genomeList, IList<ISpecie<TGenome>> specieList)
         {
             // Each specie should contain at least one genome. We need at least one existing genome per specie to act
             // as a specie centroid in order to define where the specie is within the encoding space.
             Debug.Assert(SpeciationUtils.TestPopulatedSpecies(specieList), "SpeciateOffspring(IList<TGenome>,IList<Species<TGenome>>) called with an empty specie.");
 
             // Make a copy of genomeList and shuffle the items.
-            List<TGenome> gList = new List<TGenome>(genomeList);
+            var gList = new List<TGenome>(genomeList);
             Utilities.Shuffle(gList, _rng);
 
             // Count how many genomes we have in total.
@@ -139,17 +140,14 @@ namespace SharpNeat.SpeciationStrategies
             // the correct index in the main specieList. The principle here is that we wish to ensure that genomes are
             // allocated to smaller species in preference to larger species, this is motivated by the desire to create
             // evenly sized species.
-            List<Specie<TGenome>> sList = new List<Specie<TGenome>>(specieList);
-            sList.Sort(delegate(Specie<TGenome> x, Specie<TGenome> y)
-                        {   // We use the difference in size where we aren't expecting that diff value to overflow the range of an int.
-                            return x.GenomeList.Count - y.GenomeList.Count;
-                        });
+            var sList = new List<ISpecie<TGenome>>(specieList);
+            sList.Sort((x, y) => x.GenomeList.Count - y.GenomeList.Count);
 
             // Add genomes into each specie in turn until they each reach genomesPerSpecie in size.
             int genomeIdx = 0;
             for(int i=0; i<specieCount && genomeIdx<genomeCount; i++)
             {
-                Specie<TGenome> specie = sList[i];
+                var specie = sList[i];
                 int fillcount = genomesPerSpecie - specie.GenomeList.Count;
 
                 if(fillcount <= 0) 

@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using SharpNEAT.Interfaces;
 using SharpNeat.Core;
 using SharpNeat.DistanceMetrics;
 using SharpNeat.EvolutionAlgorithms.ComplexityRegulation;
@@ -43,7 +44,7 @@ namespace SharpNeat.EvolutionAlgorithms
         readonly NeatEvolutionAlgorithmParameters _eaParamsSimplifying;
 
         readonly ISpeciationStrategy<TGenome> _speciationStrategy;
-        IList<Specie<TGenome>> _specieList;
+        IList<ISpecie<TGenome>> _specieList;
         /// <summary>Index of the specie that contains _currentBestGenome.</summary>
         int _bestSpecieIdx;
         readonly FastRandom _rng = new FastRandom();
@@ -104,7 +105,7 @@ namespace SharpNeat.EvolutionAlgorithms
         /// Gets a list of all current species. The genomes contained within the species are the same genomes
         /// available through the GenomeList property.
         /// </summary>
-        public IList<Specie<TGenome>> SpecieList
+        public IList<ISpecie<TGenome>> SpecieList
         {
             get { return _specieList; }
         }
@@ -801,7 +802,7 @@ namespace SharpNeat.EvolutionAlgorithms
             int count = _specieList.Count;
             for(int i=0; i<count; i++)
             {
-                Specie<TGenome> specie = _specieList[i];
+                var specie = _specieList[i];
                 SpecieStats stats = specieStatsArr[i];
 
                 int removeCount = specie.GenomeList.Count - stats._eliteSizeInt;
@@ -821,9 +822,9 @@ namespace SharpNeat.EvolutionAlgorithms
         /// <summary>
         /// Returns true if there is one or more empty species.
         /// </summary>
-        private bool TestForEmptySpecies(IList<Specie<TGenome>> specieList)
+        private bool TestForEmptySpecies(IList<ISpecie<TGenome>> specieList)
         {
-            foreach(Specie<TGenome> specie in specieList) {
+            foreach(var specie in specieList) {
                 if(specie.GenomeList.Count == 0) {
                     return true;
                 }

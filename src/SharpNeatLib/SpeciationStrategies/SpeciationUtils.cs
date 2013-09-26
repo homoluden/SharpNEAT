@@ -19,6 +19,7 @@
 using System.Collections.Generic;
 using SharpNeat.Core;
 using System.Diagnostics;
+using SharpNEAT.Interfaces;
 
 namespace SharpNeat.SpeciationStrategies
 {
@@ -30,7 +31,7 @@ namespace SharpNeat.SpeciationStrategies
         /// <summary>
         /// Returns true if all of the species are empty.
         /// </summary>
-        public static bool TestEmptySpecies<TGenome>(IList<Specie<TGenome>> specieList)
+        public static bool TestEmptySpecies<TGenome>(IList<ISpecie<TGenome>> specieList)
              where TGenome : class, IGenome<TGenome>
         {
             foreach(Specie<TGenome> specie in specieList) 
@@ -45,7 +46,7 @@ namespace SharpNeat.SpeciationStrategies
         /// <summary>
         /// Returns true if all species contain at least 1 genome.
         /// </summary>
-        public static bool TestPopulatedSpecies<TGenome>(IList<Specie<TGenome>> specieList)
+        public static bool TestPopulatedSpecies<TGenome>(IList<ISpecie<TGenome>> specieList)
             where TGenome : class, IGenome<TGenome>
         {
             foreach(Specie<TGenome> specie in specieList)
@@ -61,7 +62,7 @@ namespace SharpNeat.SpeciationStrategies
         /// Perform an integrity check on the provided species.
         /// Returns true if everything is OK.
         /// </summary>
-        public static bool PerformIntegrityCheck<TGenome>(IList<Specie<TGenome>> specieList)
+        public static bool PerformIntegrityCheck<TGenome>(IList<ISpecie<TGenome>> specieList)
             where TGenome : class, IGenome<TGenome>
         {
             // Check that all species contain at least one genome.

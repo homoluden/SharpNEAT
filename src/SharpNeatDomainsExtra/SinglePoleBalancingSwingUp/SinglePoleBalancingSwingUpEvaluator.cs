@@ -17,6 +17,7 @@
  * along with SharpNEAT.  If not, see <http://www.gnu.org/licenses/>.
  */
 using System;
+using SharpNEAT.Interfaces;
 using SharpNeat.Core;
 using SharpNeat.Phenomes;
 using SharpNeat.DomainsExtra.SinglePoleBalancingBox2d;

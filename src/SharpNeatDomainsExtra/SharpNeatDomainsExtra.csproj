@@ -103,6 +103,18 @@
     <Content Include="SinglePoleBalancingBox2d\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{d83a91ca-21bc-44c4-a714-424e6c144740}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{c9ac4b87-f4a8-42df-9264-68bef3f80111}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{09c4fc12-2c77-4a4f-bba0-96511b0770fe}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SharpNeatDomains\SharpNeatDomains.csproj">
       <Project>{73AB8C8C-6315-4DC7-A3DE-3C747F86AC78}</Project>
       <Name>SharpNeatDomains</Name>
@@ -110,6 +122,10 @@
     <ProjectReference Include="..\SharpNeatLib\SharpNeatLib.csproj">
       <Project>{ABC5C77A-DEBA-420C-926C-BD3E6F37AE15}</Project>
       <Name>SharpNeatLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{66586563-8614-4aff-ade7-6d44f2f20a01}</Project>
+      <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using SharpNEAT.Interfaces;
 using SharpNeat.Core;
 
 namespace SharpNeat.SpeciationStrategies
@@ -59,13 +60,13 @@ namespace SharpNeat.SpeciationStrategies
         /// Speciates the genomes in genomeList into the number of species specified by specieCount
         /// and returns a newly constructed list of Specie objects containing the speciated genomes.
         /// </summary>
-        public IList<Specie<TGenome>> InitializeSpeciation(IList<TGenome> genomeList, int specieCount)
+        public IList<ISpecie<TGenome>> InitializeSpeciation(IList<TGenome> genomeList, int specieCount)
         {
             // Create empty specieList.
             // Use an initial specieList capacity that will limit the need for memory reallocation but that isn't
             // too wasteful of memory.
             int initSpeciesCapacity = (genomeList.Count * 2) / specieCount;
-            List<Specie<TGenome>> specieList = new List<Specie<TGenome>>(specieCount);
+            var specieList = new List<ISpecie<TGenome>>(specieCount);
             for(int i=0; i<specieCount; i++) {
                 specieList.Add(new Specie<TGenome>((uint)i, i, initSpeciesCapacity));
             }
@@ -81,10 +82,10 @@ namespace SharpNeat.SpeciationStrategies
         /// 
         /// This method can be used for initialization or completely respeciating an existing genome population.
         /// </summary>
-        public void SpeciateGenomes(IList<TGenome> genomeList, IList<Specie<TGenome>> specieList)
+        public void SpeciateGenomes(IList<TGenome> genomeList, IList<ISpecie<TGenome>> specieList)
         {
-            Debug.Assert(SpeciationUtils.TestEmptySpecies(specieList), "SpeciateGenomes(IList<TGenome>,IList<Species<TGenome>>) called with non-empty species");
-            Debug.Assert(genomeList.Count >= specieList.Count, string.Format("SpeciateGenomes(IList<TGenome>,IList<Species<TGenome>>). Species count [{0}] is greater than genome count [{1}].", specieList.Count, genomeList.Count));
+            Debug.Assert(SpeciationUtils.TestEmptySpecies(specieList), "SpeciateGenomes(IList<TGenome>,IList<ISpecies<TGenome>>) called with non-empty species");
+            Debug.Assert(genomeList.Count >= specieList.Count, string.Format("SpeciateGenomes(IList<TGenome>,IList<ISpecies<TGenome>>). Species count [{0}] is greater than genome count [{1}].", specieList.Count, genomeList.Count));
 
             // Randomly allocate the first k genomes to their own specie. Because there is only one genome in these
             // species each genome effectively represents a specie centroid. This is necessary to ensure we get k specieList.
@@ -95,7 +96,7 @@ namespace SharpNeat.SpeciationStrategies
             int specieCount = specieList.Count;
             for(int i=0; i<specieCount; i++)
             {
-                Specie<TGenome> specie = specieList[i];
+                var specie = specieList[i];
                 genomeList[i].SpecieIdx = specie.Idx;
                 specie.GenomeList.Add(genomeList[i]);
 
@@ -106,14 +107,14 @@ namespace SharpNeat.SpeciationStrategies
             // Now allocate the remaining genomes based on their distance from the centroids.
             int genomeCount = genomeList.Count;
             for(int i=specieCount; i<genomeCount; i++) {
-                TGenome genome = genomeList[i];
-                Specie<TGenome> closestSpecie = FindClosestSpecie(genome, specieList);
+                var genome = genomeList[i];
+                var closestSpecie = FindClosestSpecie(genome, specieList);
                 genome.SpecieIdx = closestSpecie.Idx;
                 closestSpecie.GenomeList.Add(genome);
             }
 
             // Recalculate each specie's centroid.
-            foreach(Specie<TGenome> specie in specieList) {
+            foreach(var specie in specieList) {
                 specie.Centroid = CalculateSpecieCentroid(specie);
             }
 
@@ -130,7 +131,7 @@ namespace SharpNeat.SpeciationStrategies
         /// that we wish to keep; typically these would be elite genomes that are the parents of the
         /// offspring.
         /// </summary>
-        public void SpeciateOffspring(IList<TGenome> offspringList, IList<Specie<TGenome>> specieList)
+        public void SpeciateOffspring(IList<TGenome> offspringList, IList<ISpecie<TGenome>> specieList)
         {
             // Each specie should contain at least one genome. We need at least one existing genome per specie to act
             // as a specie centroid in order to define where the specie is within the encoding space.
@@ -145,24 +146,24 @@ namespace SharpNeat.SpeciationStrategies
             // Allocate each offspring genome to the specie it is closest to. 
             foreach(TGenome genome in offspringList)
             {
-                Specie<TGenome> closestSpecie = FindClosestSpecie(genome, specieList);
+                var closestSpecie = FindClosestSpecie(genome, specieList);
                 closestSpecie.GenomeList.Add(genome);
                 genome.SpecieIdx = closestSpecie.Idx;
             }
 
             // Recalculate each specie's centroid now that we have additional genomes in the specieList.
-            foreach(Specie<TGenome> specie in specieList) {
+            foreach(var specie in specieList) {
                 specie.Centroid = CalculateSpecieCentroid(specie);
             }
 
             // Accumulate *all* genomes into a flat genome list.
             int genomeCount = 0;
-            foreach(Specie<TGenome> specie in specieList) {
+            foreach(var specie in specieList) {
                 genomeCount += specie.GenomeList.Count;
             }
 
-            List<TGenome> genomeList = new List<TGenome>(genomeCount);
-            foreach(Specie<TGenome> specie in specieList) {
+            var genomeList = new List<TGenome>(genomeCount);
+            foreach(var specie in specieList) {
                 genomeList.AddRange(specie.GenomeList);
             }
 
@@ -182,9 +183,9 @@ namespace SharpNeat.SpeciationStrategies
         /// therefore we require the additional max loops threshold exit strategy - the clusters should be pretty
         /// stable and well defined after a few loops even if the the algorithm hasn't converged completely.
         /// </summary>
-        private void SpeciateUntilConvergence(IList<TGenome> genomeList, IList<Specie<TGenome>> specieList)
+        private void SpeciateUntilConvergence(IList<TGenome> genomeList, IList<ISpecie<TGenome>> specieList)
         {
-            List<Specie<TGenome>> emptySpecieList = new List<Specie<TGenome>>();
+            var emptySpecieList = new List<ISpecie<TGenome>>();
             int specieCount = specieList.Count;
 
             // Array of flags that indicate if a specie was modified (had genomes allocated to and/or from it).
@@ -200,7 +201,7 @@ namespace SharpNeat.SpeciationStrategies
                 // it is currently in then reallocate it.
                 foreach(TGenome genome in genomeList)
                 {
-                    Specie<TGenome> closestSpecie = FindClosestSpecie(genome, specieList);
+                    var closestSpecie = FindClosestSpecie(genome, specieList);
                     if(genome.SpecieIdx != closestSpecie.Idx) 
                     {
                         // Track which species have been modified.
@@ -232,7 +233,7 @@ namespace SharpNeat.SpeciationStrategies
                     
                     // Remove the genomes that have been allocated to other other species. We fill the resulting 
                     // gaps by shuffling down the remaining genomes.
-                    Specie<TGenome> specie = specieList[i];
+                    var specie = specieList[i];
                     specie.GenomeList.RemoveAll(delegate(TGenome genome) 
                     {
                         return genome.SpecieIdx != specie.Idx;
@@ -256,7 +257,7 @@ namespace SharpNeat.SpeciationStrategies
                     // We find the genomes in the population as a whole that are furthest from their containing specie's 
                     // centroid genome - we call these outlier genomes. We then move these genomes into the empty species to
                     // act as the sole member and centroid of those speciea; These act as specie seeds for the next k-means loop.
-                    TGenome[] genomeByDistanceArr = GetGenomesByDistanceFromSpecie(genomeList, specieList);
+                    var genomeByDistanceArr = GetGenomesByDistanceFromSpecie(genomeList, specieList);
 
                     // Reallocate each of the outlier genomes from their current specie to an empty specie.
                     int emptySpecieCount = emptySpecieList.Count;
@@ -266,7 +267,7 @@ namespace SharpNeat.SpeciationStrategies
                         // Find the next outlier genome that can be re-allocated. Skip genomes that are the
                         // only member of a specie - that would just create another empty specie.
                         TGenome genome;
-                        Specie<TGenome> sourceSpecie;
+                        ISpecie<TGenome> sourceSpecie;
                         do
                         {
                             genome = genomeByDistanceArr[outlierIdx++];
@@ -280,7 +281,7 @@ namespace SharpNeat.SpeciationStrategies
                         }
 
                         // Get ref to the empty specie and register both source and target specie with specieModArr.
-                        Specie<TGenome> emptySpecie = emptySpecieList[i];
+                        var emptySpecie = emptySpecieList[i];
                         specieModArr[emptySpecie.Idx] = true;
                         specieModArr[sourceSpecie.Idx] = true;
 
@@ -320,7 +321,7 @@ namespace SharpNeat.SpeciationStrategies
         /// <summary>
         /// Recalculate the specie centroid based on the genomes currently in the specie.
         /// </summary>
-        private CoordinateVector CalculateSpecieCentroid(Specie<TGenome> specie)
+        private CoordinateVector CalculateSpecieCentroid(ISpecie<TGenome> specie)
         {
             // Special case - 1 genome in specie (its position *is* the specie centroid).
             if(1 == specie.GenomeList.Count) {
@@ -328,9 +329,9 @@ namespace SharpNeat.SpeciationStrategies
             }
 
             // Create a temp list containing all of the genome positions.
-            List<TGenome> genomeList = specie.GenomeList;
+            var genomeList = specie.GenomeList;
             int count = genomeList.Count;
-            List<CoordinateVector> coordList = new List<CoordinateVector>(count);
+            var coordList = new List<CoordinateVector>(count);
             for(int i=0; i<count; i++) {
                 coordList.Add(genomeList[i].Position);
             }
@@ -343,11 +344,11 @@ namespace SharpNeat.SpeciationStrategies
         /// <summary>
         /// Gets an array of all genomes ordered by their distance from their current specie.
         /// </summary>
-        private TGenome[] GetGenomesByDistanceFromSpecie(IList<TGenome> genomeList, IList<Specie<TGenome>> specieList)
+        private TGenome[] GetGenomesByDistanceFromSpecie(IList<TGenome> genomeList, IList<ISpecie<TGenome>> specieList)
         {
             // Build a list of all genomes paired with their distance from their centriod.
             int genomeCount = genomeList.Count;
-            GenomeDistancePair<TGenome>[] genomeDistanceArr = new GenomeDistancePair<TGenome>[genomeCount];
+            var genomeDistanceArr = new GenomeDistancePair<TGenome>[genomeCount];
             for(int i=0; i<genomeCount; i++)
             {
                 TGenome genome = genomeList[i];
@@ -359,7 +360,7 @@ namespace SharpNeat.SpeciationStrategies
             Array.Sort(genomeDistanceArr);
 
             // Put the sorted genomes in an array and return it.
-            TGenome[] genomeArr = new TGenome[genomeCount];
+            var genomeArr = new TGenome[genomeCount];
             for(int i=0; i<genomeCount; i++) {
                 genomeArr[i] = genomeDistanceArr[i]._genome;
             }
@@ -370,10 +371,10 @@ namespace SharpNeat.SpeciationStrategies
         /// <summary>
         /// Find the specie that a genome is closest to as determined by the distance metric.
         /// </summary>
-        private Specie<TGenome> FindClosestSpecie(TGenome genome, IList<Specie<TGenome>> specieList)
+        private ISpecie<TGenome> FindClosestSpecie(TGenome genome, IList<ISpecie<TGenome>> specieList)
         {
             // Measure distance to first specie's centroid.
-            Specie<TGenome> closestSpecie = specieList[0];
+            var closestSpecie = specieList[0];
             double closestDistance = _distanceMetric.MeasureDistance(genome.Position, closestSpecie.Centroid);
 
             // Measure distance to all remaining species.

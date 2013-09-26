@@ -67,28 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\AuxFitnessInfo.cs" />
-    <Compile Include="Core\CoordinateVector.cs" />
-    <Compile Include="Core\FitnessInfo.cs" />
-    <Compile Include="Core\GenomeFitnessComparer.cs" />
-    <Compile Include="Core\IDistanceMetric.cs" />
-    <Compile Include="Core\EvaluationInfo.cs" />
-    <Compile Include="Core\IEvolutionAlgorithm.cs" />
-    <Compile Include="Core\IGenome.cs" />
-    <Compile Include="Core\IGenomeDecoder.cs" />
-    <Compile Include="Core\IGenomeFactory.cs" />
-    <Compile Include="Core\IGenomeListEvaluator.cs" />
-    <None Include="Core\ParallelGenomeListEvaluatorV1.cs" />
-    <Compile Include="Core\ParallelGenomeListEvaluator.cs" />
-    <Compile Include="Core\SelectiveGenomeListEvaluator.cs" />
-    <Compile Include="Core\SerialGenomeListEvaluator.cs" />
-    <Compile Include="Core\IPhenomeEvaluator.cs" />
     <None Include="DeadCode\Population.cs" />
-    <Compile Include="Core\ISpeciationStrategy.cs" />
-    <Compile Include="Core\RunState.cs" />
-    <Compile Include="Core\Specie.cs" />
-    <Compile Include="Core\UpdateMode.cs" />
-    <Compile Include="Core\UpdateScheme.cs" />
     <Compile Include="Decoders\FastAcyclicNetworkFactory.cs" />
     <Compile Include="Decoders\CyclicNetworkFactory.cs" />
     <Compile Include="Decoders\FastCyclicNetworkFactory.cs" />
@@ -224,21 +203,6 @@
     <Compile Include="SpeciationStrategies\KMeansClusteringStrategy.cs" />
     <Compile Include="SpeciationStrategies\RandomClusteringStrategy.cs" />
     <Compile Include="SpeciationStrategies\SpeciationUtils.cs" />
-    <Compile Include="Utility\BoxMullerGaussianSampler.cs" />
-    <Compile Include="Utility\CircularBuffer.cs" />
-    <Compile Include="Utility\ZigguratGaussianSampler.cs" />
-    <Compile Include="Utility\FrequencyDistributionData.cs" />
-    <Compile Include="Utility\DoubleCircularBufferWithStats.cs" />
-    <Compile Include="Utility\FastRandom.cs" />
-    <Compile Include="Utility\XmlIoUtils.cs" />
-    <Compile Include="Utility\KeyedCircularBuffer.cs" />
-    <Compile Include="SharpNeatException.cs" />
-    <Compile Include="Utility\ParallelSort.cs" />
-    <Compile Include="Utility\Point2DDouble.cs" />
-    <Compile Include="Utility\RouletteWheel.cs" />
-    <Compile Include="Utility\RouletteWheelLayout.cs" />
-    <Compile Include="Utility\UInt32IdGenerator.cs" />
-    <Compile Include="Utility\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -262,7 +226,24 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{d83a91ca-21bc-44c4-a714-424e6c144740}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{c9ac4b87-f4a8-42df-9264-68bef3f80111}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{09c4fc12-2c77-4a4f-bba0-96511b0770fe}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{66586563-8614-4aff-ade7-6d44f2f20a01}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -52,6 +52,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{d83a91ca-21bc-44c4-a714-424e6c144740}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{c9ac4b87-f4a8-42df-9264-68bef3f80111}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{09c4fc12-2c77-4a4f-bba0-96511b0770fe}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SharpNeatDomains\SharpNeatDomains.csproj">
       <Project>{73AB8C8C-6315-4DC7-A3DE-3C747F86AC78}</Project>
       <Name>SharpNeatDomains</Name>
