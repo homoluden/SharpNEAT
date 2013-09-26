@@ -1,5 +1,5 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNeatLib", "SharpNeatLib\SharpNeatLib.csproj", "{ABC5C77A-DEBA-420C-926C-BD3E6F37AE15}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNeatGUI", "SharpNeatGUI\SharpNeatGUI.csproj", "{407D1C95-118D-42C5-9FCF-BB3628873B4E}"
@@ -13,6 +13,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Box2dTestHarness", "Box2dTestHarness\Box2dTestHarness.csproj", "{0E2AEE8E-8B7C-4257-ABB8-356B4885745E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNeatDomainsExtra", "SharpNeatDomainsExtra\SharpNeatDomainsExtra.csproj", "{3A1B9DEC-AECE-42F3-BAD9-9172482C43AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpNeat.Lib", "SharpNeat.Lib", "{07539AF5-BFD9-4184-B3CC-9132B9DC4408}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,5 +99,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ABC5C77A-DEBA-420C-926C-BD3E6F37AE15} = {07539AF5-BFD9-4184-B3CC-9132B9DC4408}
 	EndGlobalSection
 EndGlobal
