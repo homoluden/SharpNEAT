@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C9AC4B87-F4A8-42DF-9264-68BEF3F80111}</ProjectGuid>
+    <ProjectGuid>{C88C2903-27D6-40C3-B1F0-F9BEB39F55C4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharpNEAT.Core</RootNamespace>
-    <AssemblyName>SharpNEAT.Core</AssemblyName>
+    <RootNamespace>SharpNEAT.Evolution</RootNamespace>
+    <AssemblyName>SharpNEAT.Evolution</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdPartyAssemblies\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,26 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DistanceMetrics\DistanceMetricUtils.cs" />
-    <Compile Include="DistanceMetrics\EuclideanDistanceMetric.cs" />
-    <Compile Include="DistanceMetrics\ManhattanDistanceMetric.cs" />
-    <Compile Include="GenomeFitnessComparer.cs" />
-    <Compile Include="ParallelGenomeListEvaluator.cs" />
-    <Compile Include="SelectiveGenomeListEvaluator.cs" />
-    <Compile Include="SerialGenomeListEvaluator.cs" />
-    <Compile Include="SpeciationStrategies\GenomeDistancePair.cs" />
-    <Compile Include="SpeciationStrategies\KMeansClusteringStrategy.cs" />
-    <Compile Include="SpeciationStrategies\ParallelKMeansClusteringStrategy.cs" />
-    <Compile Include="SpeciationStrategies\RandomClusteringStrategy.cs" />
-    <Compile Include="SpeciationStrategies\SpeciationUtils.cs" />
-    <Compile Include="Specie.cs" />
-    <None Include="ParallelGenomeListEvaluatorV1.cs" />
+    <Compile Include="AbstractGenerationalAlgorithm.cs" />
+    <Compile Include="ComplexityRegulation\ComplexityCeilingType.cs" />
+    <Compile Include="ComplexityRegulation\ComplexityRegulationMode.cs" />
+    <Compile Include="ComplexityRegulation\DefaultComplexityRegulationStrategy.cs" />
+    <Compile Include="ComplexityRegulation\IComplexityRegulationStrategy.cs" />
+    <Compile Include="ComplexityRegulation\NullComplexityRegulationStrategy.cs" />
+    <Compile Include="NeatAlgorithmStats.cs" />
+    <Compile Include="NeatEvolutionAlgorithm.cs" />
+    <Compile Include="NeatEvolutionAlgorithmParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{d83a91ca-21bc-44c4-a714-424e6c144740}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{c9ac4b87-f4a8-42df-9264-68bef3f80111}</Project>
+      <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Interfaces\Interfaces.csproj">
       <Project>{09c4fc12-2c77-4a4f-bba0-96511b0770fe}</Project>

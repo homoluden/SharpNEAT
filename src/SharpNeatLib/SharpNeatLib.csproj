@@ -69,14 +69,6 @@
   <ItemGroup>
     <None Include="DeadCode\Population.cs" />
     <None Include="DeadCode\NeatActivationFunctionLibrary.cs" />
-    <Compile Include="DistanceMetrics\DistanceMetricUtils.cs" />
-    <Compile Include="DistanceMetrics\ManhattanDistanceMetric.cs" />
-    <Compile Include="DistanceMetrics\EuclideanDistanceMetric.cs" />
-    <Compile Include="EvolutionAlgorithms\ComplexityRegulation\ComplexityCeilingType.cs" />
-    <Compile Include="EvolutionAlgorithms\ComplexityRegulation\DefaultComplexityRegulationStrategy.cs" />
-    <Compile Include="EvolutionAlgorithms\ComplexityRegulation\IComplexityRegulationStrategy.cs" />
-    <Compile Include="EvolutionAlgorithms\ComplexityRegulation\NullComplexityRegulationStrategy.cs" />
-    <Compile Include="EvolutionAlgorithms\NeatAlgorithmStats.cs" />
     <None Include="DeadCode\PhasedSearch\Triggers\AbsoluteMeanComplexityCeilingTrigger.cs" />
     <None Include="DeadCode\PhasedSearch\Triggers\SimplificationStallGenerationsTrigger.cs" />
     <None Include="DeadCode\PhasedSearch\Triggers\ElapsedClockTimeTrigger.cs" />
@@ -85,10 +77,6 @@
     <None Include="DeadCode\PhasedSearch\Triggers\FitnessStallGenerationsTrigger.cs" />
     <None Include="DeadCode\PhasedSearch\Triggers\MovingMeanComplexityCeilingTrigger.cs" />
     <None Include="DeadCode\PhasedSearch\Triggers\IPhaseTransitionTrigger.cs" />
-    <Compile Include="EvolutionAlgorithms\NeatEvolutionAlgorithm.cs" />
-    <Compile Include="EvolutionAlgorithms\AbstractGenerationalAlgorithm.cs" />
-    <Compile Include="EvolutionAlgorithms\NeatEvolutionAlgorithmParameters.cs" />
-    <Compile Include="EvolutionAlgorithms\ComplexityRegulation\ComplexityRegulationMode.cs" />
     <None Include="DeadCode\PhasedSearchStats.cs" />
     <None Include="DeadCode\PhasedSearch\Triggers\SimplificationStallClockTimeTrigger.cs" />
     <None Include="DeadCode\DefaultCppnActivationFunctionLibrary.cs" />
@@ -112,11 +100,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SpeciationStrategies\GenomeDistancePair.cs" />
-    <Compile Include="SpeciationStrategies\ParallelKMeansClusteringStrategy.cs" />
-    <Compile Include="SpeciationStrategies\KMeansClusteringStrategy.cs" />
-    <Compile Include="SpeciationStrategies\RandomClusteringStrategy.cs" />
-    <Compile Include="SpeciationStrategies\SpeciationUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -159,7 +142,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Genomes\" />
+    <Folder Include="EvolutionAlgorithms\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

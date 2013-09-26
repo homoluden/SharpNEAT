@@ -115,6 +115,10 @@
       <Project>{223dc668-e791-4b78-b3ed-bed954954741}</Project>
       <Name>Decoders</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Evolution\Evolution.csproj">
+      <Project>{c88c2903-27d6-40c3-b1f0-f9beb39f55c4}</Project>
+      <Name>Evolution</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Genomes\Genomes.csproj">
       <Project>{52f0747e-cdce-446b-a724-89a4d9d1abe5}</Project>
       <Name>Genomes</Name>
@@ -148,6 +152,9 @@
     <EmbeddedResource Include="Box2D\Box2dDomainView.resx">
       <DependentUpon>Box2dDomainView.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
